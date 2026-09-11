@@ -16,7 +16,8 @@ class ShopingCart:
 class Store:
     
     def __init__(self):
-            pass
+
+    def add_product(self, test):
 
 
 
