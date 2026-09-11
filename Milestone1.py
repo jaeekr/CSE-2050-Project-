@@ -10,12 +10,12 @@ class Customer:
 
 class ShopingCart:
     
-    def __init__():
+    def __init__(self):
             pass
 
 class Store:
     
-    def __init__():
+    def __init__(self):
             pass
 
 
