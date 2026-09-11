@@ -1,11 +1,11 @@
 class Product:
 
-    def __init__():
+    def __init__(self):
         pass
 
 class Customer:
 
-    def __init__():
+    def __init__(self):
             pass
 
 class ShopingCart:
