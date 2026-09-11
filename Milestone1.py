@@ -1,14 +1,37 @@
 class Product:
 
-    def __init__(self):
-        pass
+    def __init__(self, product_id:str, name:str, price:float):
+        self.product_id=product_id, 
+        self.name=name
+        self.price= price
+
+        
+    def get_id(self):
+        return f'{self.product_id}'
+    
+    def get_named(self):
+        return f'{self.name}'
+
+    def get_price(self):
+        return f'{self.price}'
 
 class Customer:
 
-    def __init__(self):
-            pass
+    def __init__(self, customer_id:str, name:str):
+            self.customer_id= customer_id
+            self.name= name
+            self.cart=[]
 
-class ShopingCart:
+    def get_id(self):
+            return f'{self.customer_id}'
+    
+    def get_name(self):
+            return f'{self.get_name}'
+    
+    def get_cart(self):
+            return f'{self.cart}'
+
+class ShoppingCart:
     
     def __init__(self):
             pass
