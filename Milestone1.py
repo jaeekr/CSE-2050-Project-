@@ -34,7 +34,7 @@ class Customer:
 class ShoppingCart:
     
     def __init__(self):
-        self.items = []
+        self.items: list[Product] = []
 
     def add_product(self, product: 'Product'):
         self.items.append(product)
@@ -47,7 +47,7 @@ class ShoppingCart:
         return False       
             
     def get_items(self):
-        return f'{self.items}'
+        return self.items
 
     def calculate_total(self):
         total = 0
