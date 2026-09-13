@@ -34,30 +34,30 @@ class Customer:
 class ShoppingCart:
     
     def __init__(self):
-        self.cart = []
+        self.items = []
 
     def add_product(self, product: 'Product'):
-        self.cart.append(product)
+        self.items.append(product)
 
     def remove_product(self, product_id: str):
-        for product in self.cart:
+        for product in self.items:
             if product.get_id() == product_id:
-                self.cart.remove(product)
+                self.items.remove(product)
                 return True       
         return False       
             
     def get_items(self):
-        return f'{self.cart}'
+        return f'{self.items}'
 
     def calculate_total(self):
         total = 0
-        for product in self.cart:
+        for product in self.items:
             total += product.get_price()
 
         return total
 
     def is_empty(self):
-        if len(self.cart) == 0:
+        if len(self.items) == 0:
             return True
         else:
             return False
