@@ -39,7 +39,7 @@ class ShoppingCart:
     def add_product(self, product: 'Product'):
         self.cart.append(product)
 
-    def product(self, product_id: str):
+    def remove_product(self, product_id: str):
         for product in self.cart:
             if product.get_id() == product_id:
                 self.cart.remove(product)
