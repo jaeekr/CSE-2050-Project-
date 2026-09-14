@@ -1,9 +1,11 @@
+from cart import ShoppingCart
+
 class Customer:
 
     def __init__(self, id:str, name:str):
             self.id= id
             self.name= name
-            self.cart= []
+            self.cart = ShoppingCart()
 
     def get_id(self):
             return self.id
