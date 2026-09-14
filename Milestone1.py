@@ -57,10 +57,7 @@ class ShoppingCart:
         return total
 
     def is_empty(self):
-        if len(self.items) == 0:
-            return True
-        else:
-            return False
+        return len(self.items) == 0
 
 class Store:
     
