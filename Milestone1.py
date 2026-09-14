@@ -15,12 +15,14 @@ class Product:
     def get_price(self):
         return self.price
 
+
+from cart import ShoppingCart
 class Customer:
 
-    def __init__(self, _id:str, name:str):
+    def __init__(self, id:str, name:str):
             self.id= id
             self.name= name
-            self.cart= []
+            self.cart = ShoppingCart()
 
     def get_id(self):
             return self.id
