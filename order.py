@@ -28,7 +28,7 @@ class Order:
 
     def set_status(self, new_status: str):
         '''takes a new status for the order and makes sure it is one of three valid order status and then updates the order status to the valid input'''
-        valid = ['PENDING', 'PROCCESING', 'COMPLETED']
+        valid = ['PENDING', 'PROCESSING', 'COMPLETED']
         if new_status not in valid:
             raise ValueError('Not a valid status')
         
