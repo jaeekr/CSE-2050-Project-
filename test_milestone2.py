@@ -87,10 +87,10 @@ class TestOrder(unittest.TestCase):
 
         self.assertEqual(order1.get_status(), 'PENDING')
         # test setting and getting status of order objects
-        order1.set_status('PROCCESING')
+        order1.set_status('PROCESSING')
         order2.set_status('COMPLETED')
         # test that the status has been updated correctly
-        self.assertEqual(order1.get_status(), 'PROCCESING')
+        self.assertEqual(order1.get_status(), 'PROCESSING')
         self.assertEqual(order2.get_status(), 'COMPLETED')
         # test that setting an invalid status raises a ValueError
         self.assertRaises(ValueError, order1.set_status, 'HELLO')
