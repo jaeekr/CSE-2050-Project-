@@ -86,6 +86,7 @@ class TestOrder(unittest.TestCase):
 
         self.assertEqual(order1.get_status(), 'PROCCESING')
         self.assertEqual(order2.get_status(), 'COMPLETED')
+        self.assertRaises(ValueError, order1.set_status, 'HELLO')
 
 
 class TestStack(unittest.TestCase):
