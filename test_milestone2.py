@@ -90,7 +90,42 @@ class TestOrder(unittest.TestCase):
 
 
 class TestStack(unittest.TestCase):
-    def __init__(self):
-        pass
+    #all functions are acounted for as the other three are tested in each assert function after each other function occurs
+    def test_init(self):
+        my_stack = Stack()
+        self.assertEqual(my_stack.size(), 0)
+        self.assertIsNone(my_stack.peek())
+        self.assertTrue(my_stack.is_empty())
+    def test_stack_functions(self):
+        #PUSH
+        #one item tested first
+        my_stack = Stack()
+        my_stack.push('apple')
+        self.assertEqual(my_stack.size(), 1)
+        self.assertEqual(my_stack.peek(), 'apple')
+        self.assertFalse(my_stack.is_empty())
 
+        #POP TILL END
+        my_stack.pop()
+        self.assertEqual(my_stack.size(), 0)
+        self.assertTrue(my_stack.is_empty())
 
+        #push multiple items now
+        my_stack.push('banana')
+        my_stack.push(5)
+        my_stack.push('even')
+        self.assertEqual(my_stack.size(), 3)
+        self.assertEqual(my_stack.peek(), 'even') #testing ordering
+        self.assertFalse(my_stack.is_empty())
+
+        #POP
+        my_stack.pop()
+        self.assertEqual(my_stack.size(), 2)
+        self.assertEqual(my_stack.peek(), 5) #testing ordering
+        self.assertFalse(my_stack.is_empty())
+
+    def test_pop_empty_stack(self):
+        my_stack = Stack()
+        self.assertIsNone(my_stack.pop())
+        self.assertEqual(my_stack.size(), 0)
+        
