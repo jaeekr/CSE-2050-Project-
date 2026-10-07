@@ -1,3 +1,4 @@
+from linked_list import LinkedList
 class OrderQueue:
 
     def __init__(self):
