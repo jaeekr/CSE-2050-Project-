@@ -7,7 +7,7 @@ class Store:
     def __init__(self):
         self.products = []
         self.customers = []
-        self.empty_orders =[]
+        self.orders = []
         self.waiting_orders = OrderQueue()
         self.processed_order = Stack()
         self.order_counter = 0
@@ -37,23 +37,19 @@ class Store:
                 return c
         return None
 
-    def find_order(self,order_id:str):
-        if order_id in self.waiting_orders or self.processed_order:
-            return order_id
-        else:
-            return None
+    def find_order(self, order_id:str):
+        for order in self.orders:
+            if order.get_id() == order_id:
+                return order
+        return none
 
-    def get_order(self):
-        wo = list(self.waiting_orders)
-        po = list(self.processed_order)
-        orders = wo + po
-        return orders
+    def get_orders(self):
+        return self.orders
     
     def checkout(self,customer_id:str):
-        self.empty_orders =ShoppingCart(customer_id) # I dont think this is right, but Im confused on what its asking
-        self.waiting_orders.enqueue(self.empty_orders)
+        self.orders = ShoppingCart(customer_id) # I dont think this is right, but Im confused on what its asking
+        self.waiting_orders.enqueue(self.orders)
         ShoppingCart(customer_id).clear()
-        
 
 
 
