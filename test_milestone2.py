@@ -1,3 +1,10 @@
+from node import Node
+from linked_list import LinkedList
+from stack import Stack
+from order_queue import OrderQueue
+from order import Order
+from product import Product
+from customer import Customer
 import unittest
 
 class TestShoppingCart(unittest.TestCase):
@@ -10,13 +17,49 @@ class TestStore(unittest.TestCase):
 
 
 class TestNode(unittest.TestCase):
-    def __init__(self):
-        pass
-
+    def test_init(self):
+        second = Node('cat')
+        first = Node('dog', second)
+        self.assertEqual(first.data, 'dog')
+        self.assertIs(first.next, second)
+        self.assertIsNone(second.next)
 
 class TestLinkedList(unittest.TestCase):
-    def __init__(self):
-        pass
+    def test_empty_list(self):
+        ll = LinkedList()
+        self.assertTrue(ll.is_empty())
+        self.assertEqual(ll.size(), 0)
+        self.assertIsNone(ll.get_first())
+        self.assertIsNone(ll.remove_first())
+
+    def test_add_first(self):
+        ll = LinkedList()
+        ll.add_first('b')
+        ll.add_first('a')
+        self.assertEqual(ll.get_first(), 'a')
+        self.assertEqual(ll.size(), 2)
+        self.assertFalse(ll.is_empty())
+
+    def test_add_last(self):
+        ll = LinkedList()
+        ll.add_last('a')
+        ll.add_last('b')
+        ll.add_last('c')
+        self.assertEqual(ll.get_first(), 'a')
+        self.assertEqual(ll.size(), 3)
+
+    def test_remove_first(self):
+        ll = LinkedList()
+        ll.add_last('a')
+        ll.add_last('b')
+        self.assertEqual(ll.remove_first(), 'a')
+        self.assertEqual(ll.size(), 1)
+        self.assertEqual(ll.remove_first(), 'b')
+        self.assertTrue(ll.is_empty())
+        # List still works after being emptied
+        ll.add_last('c')
+        self.assertEqual(ll.get_first(), 'c')
+        
 
 
 class TestOrder(unittest.TestCase):
@@ -190,3 +233,7 @@ class TestStack(unittest.TestCase):
         self.assertIsNone(my_stack.pop())
         self.assertEqual(my_stack.size(), 0)
         
+
+
+if __name__ == "__main__":
+       unittest.main()
