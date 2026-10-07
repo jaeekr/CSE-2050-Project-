@@ -1,3 +1,6 @@
+from product import Product
+from customer import Customer
+
 class Order:
 
     def __init__(self, order_id: str, customer: Customer, items: list[Product]):
@@ -31,7 +34,7 @@ class Order:
         '''calculates total amount of money in the items list of a Customer by iterating through it and returning a float'''
         total = 0.0
 
-        for i in self.items:
-            total += i
+        for i in self.purchased_items:
+            total += i.get_price()
 
         return total
