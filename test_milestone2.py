@@ -56,7 +56,6 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(ll.size(), 1)
         self.assertEqual(ll.remove_first(), 'b')
         self.assertTrue(ll.is_empty())
-        # List still works after being emptied
         ll.add_last('c')
         self.assertEqual(ll.get_first(), 'c')
         
