@@ -22,6 +22,10 @@ class Order:
         '''return status of order'''
         return self.status
 
+    def get_items(self):
+        ''' return list of items'''
+        return self.purchased_items
+
     def set_status(self, new_status: str):
         '''takes a new status for the order and makes sure it is one of three valid order status and then updates the order status to the valid input'''
         valid = ['PENDING', 'PROCCESING', 'COMPLETED']
@@ -36,5 +40,7 @@ class Order:
 
         for i in self.purchased_items:
             total += i.get_price()
+
+        return total
 
         return total
