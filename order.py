@@ -7,7 +7,7 @@ class Order:
         '''initialized an Order object with object_id, customer and a list of products as well as a order status'''
         self.order_id = order_id
         self.customer = customer
-        self.purchased_items = list(items)
+        self.purchased_items = list(items) #ensures indpendance of cart
         self.status = 'PENDING'
 
     def get_id(self):
