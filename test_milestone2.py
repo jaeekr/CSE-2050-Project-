@@ -17,7 +17,6 @@ class TestShoppingCart(unittest.TestCase):
 
 class TestStore(unittest.TestCase):
     def __init__(self):
-
         pass
 
 

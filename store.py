@@ -2,6 +2,7 @@ from stack import Stack
 from cart import ShoppingCart
 from order_queue import OrderQueue
 from order import Order
+from customer import Customer
 
 class Store:
     
@@ -48,23 +49,41 @@ class Store:
         return self.orders
     
     def checkout(self,customer_id:str):
-        self.orders = ShoppingCart(customer_id) 
-        self.waiting_orders.enqueue(self.orders)
-        self.orders.clear()
-        if customer_id not in self.customers or self.orders.is_empty() is True:
+        '''Turn the customer's cart into a queued Order and clear the cart.'''
+        customer= self.find_customer(customer_id=)
+        if customer is None:
+            return None
+        cart= customer.get_cart()
+        if cart.is_empty():
             return None 
+        self.order_counter +=1
+        order = Order(f'O{self.order_counter}', customer, list(cart.get_items()))
+        self.orders.append(order)
+        self.waiting_orders.enqueue(order)
+        cart.clear()
+        return order
+
 
     def process_next_order(self):
-        z=OrderQueue().dequeue() 
-        y=Order(z).set_status("PROCESSING")
-        self.processed_order().push(y)
-        if self.waiting_orders.is_empty():
-            return None 
+        """Dequeue the oldest waiting order, mark it PROCESSING, and record it."""
+
+        order=self.waiting_orders.dequeue() 
+        if order is None:
+            return None
+        order.set_status("PROCESSING")
+        self.processed_order().push(order)
+        
 
 
     def get_order_history(self):
-        while self.processed_order.is_empty is False:
-            return self.processed_order.peek()
+        """Return processed orders, newest first, leaving the stack unchanged."""
+
+        history=[]
+        while not self.processed_order.is_empty():
+            history.append(self.processed_order.peek())
+        for order in reversed(history):
+            self.processed_order.push(order)
+        return history 
 
 
 
