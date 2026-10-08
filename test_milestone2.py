@@ -6,17 +6,38 @@ from order import Order
 from product import Product
 from customer import Customer
 from cart import ShoppingCart
+from store import Store
 import unittest
 
 class TestShoppingCart(unittest.TestCase):
-    def __init__(self):
+    def test_clear(self):
         first= ShoppingCart(['apples','bananas'])
         first.clear()
         self.assertTrue(first.is_empty(), 0)
         pass
 
 class TestStore(unittest.TestCase):
-    def __init__(self):
+    def setUp(self):
+        self.store = Store()
+        self.customer = Customer("C1", "Bob")
+        self.product = Product("P1", "Laptop", 1000)
+
+        self.store.add_customer(self.customer)
+        self.store.add_product(self.product)
+
+        
+
+
+    def test_checkout(self):
+        self.assertIsNone(self.store.checkout("INVALID_ID"))
+
+        self.assertIsNone(self.store.checkout("c1"))
+        self.assertEqual(len(self.store.get_order()),0)
+
+        
+
+
+
         pass
 
 

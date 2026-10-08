@@ -50,7 +50,7 @@ class Store:
     
     def checkout(self,customer_id:str):
         '''Turn the customer's cart into a queued Order and clear the cart.'''
-        customer= self.find_customer(customer_id=)
+        customer= self.find_customer(customer_id)
         if customer is None:
             return None
         cart= customer.get_cart()
