@@ -1,25 +1,23 @@
 from linked_list import LinkedList
 class Stack:
-  def __init__(self):
-    self._list = LinkedList()
-    
-  def push(self, item):
-    self._list.add_first(item)
-    
-  def pop(self):
-    if self.is_empty():
-        raise IndexError("pop from empty stack")
-    item = self._list.head.data
-    self._list.remove_first()
-    return item
-    
-  def peek(self):
-    if self.is_empty():
-        raise IndexError("peek from empty stack")
-    return self._list.head.data
-    
-  def is_empty(self):
-    return self._list.head is None
-    
-  def size(self):
-    return self._list.size
+    def __init__(self):
+        self._list = LinkedList()
+
+    def push(self, item):
+        self._list.add_first(item)
+
+    def pop(self):
+        if self.is_empty():
+            raise IndexError("pop from empty stack")
+        return self._list.remove_first()
+
+    def peek(self):
+        if self.is_empty():
+            raise IndexError("peek from empty stack")
+        return self._list.get_first()
+
+    def is_empty(self):
+        return self._list.is_empty()
+
+    def size(self):
+        return self._list.size()
