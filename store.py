@@ -10,7 +10,7 @@ class Store:
         self.products = []
         self.customers = []
         self.orders = []
-        self.waiting_orders = OrderQueue()
+        self.order_queue = OrderQueue()
         self.processed_order = Stack()
         self.order_counter = 0
 
@@ -59,7 +59,7 @@ class Store:
         self.order_counter +=1
         order = Order(f'O{self.order_counter}', customer, list(cart.get_items()))
         self.orders.append(order)
-        self.waiting_orders.enqueue(order)
+        self.order_queue.enqueue(order)
         cart.clear()
         return order
 
@@ -67,11 +67,12 @@ class Store:
     def process_next_order(self):
         """Dequeue the oldest waiting order, mark it PROCESSING, and record it."""
 
-        order=self.waiting_orders.dequeue() 
+        order = self.order_queue.dequeue() 
         if order is None:
             return None
         order.set_status("PROCESSING")
-        self.processed_order().push(order)
+        self.processed_order.push(order)
+        return order
         
 
 
@@ -80,15 +81,13 @@ class Store:
 
         history=[]
         while not self.processed_order.is_empty():
-            history.append(self.processed_order.peek())
+            history.append(self.processed_order.pop())
         for order in reversed(history):
             self.processed_order.push(order)
         return history 
 
 
 
-
-        
 
 
 
