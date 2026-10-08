@@ -1,4 +1,5 @@
 from linked_list import LinkedList
+
 class Stack:
     def __init__(self):
         self._list = LinkedList()
@@ -8,12 +9,12 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            raise IndexError("pop from empty stack")
+            return None
         return self._list.remove_first()
 
     def peek(self):
         if self.is_empty():
-            raise IndexError("peek from empty stack")
+            return None
         return self._list.get_first()
 
     def is_empty(self):
