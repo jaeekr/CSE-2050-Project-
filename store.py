@@ -1,6 +1,7 @@
 from stack import Stack 
 from cart import ShoppingCart
 from order_queue import OrderQueue
+from order import Order
 
 class Store:
     
@@ -47,9 +48,28 @@ class Store:
         return self.orders
     
     def checkout(self,customer_id:str):
-        self.orders = ShoppingCart(customer_id) # I dont think this is right, but Im confused on what its asking
+        self.orders = ShoppingCart(customer_id) 
         self.waiting_orders.enqueue(self.orders)
-        ShoppingCart(customer_id).clear()
+        self.orders.clear()
+        if customer_id not in self.customers or self.orders.is_empty() is True:
+            return None 
+
+    def process_next_order(self):
+        z=OrderQueue().dequeue() 
+        y=Order(z).set_status("PROCESSING")
+        self.processed_order().push(y)
+        if self.waiting_orders.is_empty():
+            return None 
+
+
+    def get_order_history(self):
+        while self.processed_order.is_empty is False:
+            return self.processed_order.peek()
+
+
+
+
+        
 
 
 

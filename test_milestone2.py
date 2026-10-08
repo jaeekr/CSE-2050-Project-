@@ -5,14 +5,19 @@ from order_queue import OrderQueue
 from order import Order
 from product import Product
 from customer import Customer
+from cart import ShoppingCart
 import unittest
 
 class TestShoppingCart(unittest.TestCase):
     def __init__(self):
+        first= ShoppingCart(['apples','bananas'])
+        first.clear()
+        self.assertTrue(first.is_empty(), 0)
         pass
 
 class TestStore(unittest.TestCase):
     def __init__(self):
+
         pass
 
 
