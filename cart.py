@@ -1,4 +1,4 @@
-
+from product import Product
 class ShoppingCart:
     
     def __init__(self):
