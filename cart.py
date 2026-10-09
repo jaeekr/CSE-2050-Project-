@@ -28,9 +28,6 @@ class ShoppingCart:
         return len(self.items) == 0
 
     def clear(self):
-
-        while len(self.items)!=0:
-            self.items.pop()
-        
+            self.items.clear()
 
 
