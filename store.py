@@ -3,6 +3,7 @@ from cart import ShoppingCart
 from order_queue import OrderQueue
 from order import Order
 from customer import Customer
+from product import Product
 
 class Store:
     
