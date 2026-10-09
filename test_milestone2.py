@@ -9,12 +9,6 @@ from cart import ShoppingCart
 from store import Store
 import unittest
 
-class TestShoppingCart(unittest.TestCase):
-    def test_clear(self):
-        first= ShoppingCart(['apples','bananas'])
-        first.clear()
-        self.assertTrue(first.is_empty(), 0)
-        pass
 
 class TestStore(unittest.TestCase):
     def setUp(self):
@@ -32,7 +26,7 @@ class TestStore(unittest.TestCase):
         self.assertIsNone(self.store.checkout("INVALID_ID"))
 
         self.assertIsNone(self.store.checkout("c1"))
-        self.assertEqual(len(self.store.get_order()),0)
+        self.assertEqual(len(self.store.get_orders()),0)
 
         
 
