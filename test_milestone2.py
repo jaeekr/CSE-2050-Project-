@@ -265,6 +265,22 @@ class TestStack(unittest.TestCase):
         self.assertIsNone(my_stack.pop())
         self.assertEqual(my_stack.size(), 0)
 
+    def test_recursion_catalog_total():
+        pass
+
+    def test_fewest_coins():
+        pass
+
+    def test_sorting():
+        pass
+
+    def test_binary_search():
+        pass
+
+    def test_store_integration():
+        pass
+        
+
 
 if __name__ == "__main__":
        unittest.main()
