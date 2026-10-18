@@ -88,6 +88,27 @@ class Store:
         return history 
 
 
+#MILESTONE 3 UPDATES
+def bubble_sort_products():
+    pass
+
+def selection_sort_products():
+    pass
+
+def insertion_sort_products():
+    pass
+
+def binary_search(product_id: str):
+    pass
+
+def recursive_catalog_total():
+    pass
+
+def calculate_change(coins: list(int), amount: int):
+    pass
+
+
+
 
 
 
