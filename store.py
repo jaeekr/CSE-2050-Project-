@@ -4,7 +4,8 @@ from order_queue import OrderQueue
 from order import Order
 from customer import Customer
 from product import Product
-
+from algorithms import (recursive_total_price, fewest_coins, bubble_sort,
+                        selection_sort, insertion_sort, binary_search)
 class Store:
     
     def __init__(self):

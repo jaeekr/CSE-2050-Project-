@@ -1,11 +1,54 @@
 #Recursive catalog total: compute the total value of all product prices using recursion
 def recursive_total_price(products):
-  pass
+  """Return the total of all product prices using recursion."""
+  if len(products) == 0: #base case
+    return 0.0 
+  
+  return products[0].get_price() + recursive_total_price(products[1:])
+  
+def fewest_coins(coins, amount, results=None):
+  '''fewest coins: use top down memoization'''
+  if results is None:
+    results={}
+  return helper(coins,amount, results)
+    
+
+def helper(coins,amount,results):
+  minCoins = amount
+  if amount in coins: #base case 1
+    return 1
+  elif amount ==0:  #base case 0
+    return 0 
+  elif amount in results:  #case in results
+    return results[amount]
+  else:
+    validCoins = [c for c in coins if c <= amount]
+    for i in validCoins:
+      numCoins = 1 + helper(coins, amount-i, results)
+      if numCoins < minCoins:
+          minCoins = numCoins
+          results = minCoins
+  return minCoins
+          
 
 
+  
 #fewest coins: use top down memoization
-def fewest_coins(coins, amount):
-  pass
+def fewest_coins_backup(coins, amount):
+  '''fewest coins: use top down memoization'''
+  minCoins = amount
+  if coins in amount:
+    return 1
+  elif amount ==0:
+    return 0 
+  else:
+    for i in [c for c in coins if c <= amount]:
+      numCoins =  1 + fewest_coins(coins, amount-1)
+      if numCoins < minCoins:
+        minCoins = numCoins
+  return minCoins
+    
+
 
 
 #bubble sort
