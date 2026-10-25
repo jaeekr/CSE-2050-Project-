@@ -27,13 +27,13 @@ def helper(coins,amount,results):
       numCoins = 1 + helper(coins, amount-i, results)
       if numCoins < minCoins:
           minCoins = numCoins
-          results = minCoins
+          results[amount] = minCoins
   return minCoins
           
 
 
   
-#fewest coins: use top down memoization
+#this is a worse version since but this one doesn't use the helper or results 
 def fewest_coins_backup(coins, amount):
   '''fewest coins: use top down memoization'''
   minCoins = amount

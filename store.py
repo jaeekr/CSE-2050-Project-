@@ -4,8 +4,7 @@ from order_queue import OrderQueue
 from order import Order
 from customer import Customer
 from product import Product
-from algorithms import (recursive_total_price, fewest_coins, bubble_sort,
-                        selection_sort, insertion_sort, binary_search)
+from algorithms import (recursive_total_price, fewest_coins, bubble_sort, selection_sort, insertion_sort, binary_search)
 class Store:
     
     def __init__(self):
@@ -90,23 +89,23 @@ class Store:
 
 
 #MILESTONE 3 UPDATES
-def bubble_sort_products():
-    pass
+    def bubble_sort_products(self):
+            pass
 
-def selection_sort_products():
-    pass
+    def selection_sort_products(self):
+        pass
 
-def insertion_sort_products():
-    pass
+    def insertion_sort_products(self):
+        pass
 
-def binary_search(product_id: str):
-    pass
+    def binary_search(self, product_id: str):
+        pass
 
-def recursive_catalog_total():
-    pass
+    def recursive_catalog_total(self):
+        return recursive_total_price(self.products)
 
-def calculate_change(coins: list(int), amount: int):
-    pass
+    def calculate_change(self, coins: list[int], amount: int):
+        return fewest_coins(coins, amount)
 
 
 
