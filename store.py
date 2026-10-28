@@ -96,10 +96,14 @@ class Store:
         selection_sort(self.products)
 
     def insertion_sort_products(self):
-        pass
+        insertion_sort(self.products)
 
-    def binary_search(self, product_id: str):
-        pass
+    def binary_search_products(self, product_id: str):
+        index = binary_search(self.products, product_id)
+        if index == -1:
+            return None
+        else:
+            return self.products[index]
 
     def recursive_catalog_total(self):
         return recursive_total_price(self.products)
