@@ -1,4 +1,6 @@
 RUNTIME ANALYSIS WORST CASE (BIG O)
+
+Milestone 2:
 LinkedList.add_first  O(1)
 LinkedList.add_last  O(1)
 LinkedList.remove_first  O(1)
@@ -9,3 +11,14 @@ OrderQueue.dequeue  O(1)
 Store.find_product  O(n)
 Store.find_customer  O(n)
 Store.find_order  O(n)
+
+Milestone 3:
+fewest_coins (memoized): O(C*n)  C= number of coin denominations, n= the change
+bubble_sort: O(n^2)
+selection_sort: O(n^2)
+insertion_sort: O(n^2)
+binary_search: O(log n)
+Store.bubble_sort_products: O(n^2)
+Store.selection_sort_products: O(n^2)
+Store.insertion_sort_products: O(n^2)
+Store.binary_search_product: O(log n)
