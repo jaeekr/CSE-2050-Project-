@@ -101,11 +101,15 @@ def binary_search(products, product_id, left = 0, right = None):
 
     mid_indx = (right+left)//2
 
-    if product_id == products[mid_indx]:
+    if product_id == products[mid_indx].get_id():
       return mid_indx
     
-    if product_id > products[mid_indx]:
+    if product_id > products[mid_indx].get_id():
       left = mid_indx + 1
+      return binary_search(products, product_id, left, right)
+    
+    if product_id < products[mid_indx].get_id():
+      right = mid_indx - 1
       return binary_search(products, product_id, left, right)
     
     if product_id < products[mid_indx]:
