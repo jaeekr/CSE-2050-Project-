@@ -57,7 +57,7 @@ def bubble_sort(products):
   has_swapped = False
   for i in range(n-1):
     for j in range(n-1-i):
-      if products[j+1].get_id > products[j].get_id:
+      if products[j+1].get_id() > products[j].get_id():
         products[j+1],products[j] = products[j], products[j+1]
         has_swapped = True
     if not has_swapped:
@@ -73,7 +73,7 @@ def selection_sort(products):
   for i in range(n-1):
     max_j = 0
     for j in range (n-i):
-      if products[j].get_id > products[max_j].get_id:
+      if products[j].get_id() > products[max_j].get_id():
         max_j = j
     if (n-1-i) != max_j:
       products[n-1-i], products[max_j] = products[max_j], products[n-1-i]
