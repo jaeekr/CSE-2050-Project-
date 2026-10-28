@@ -67,14 +67,14 @@ def insertion_sort(products):
   for i in range(1, len(products)):
     for j in range(i, 0, -1):
       #if switch
-      if products[j-1] > products[j]:
+      if products[j-1].get_id() > products[j].get_id():
         products[j-1], products[j] = products[j], products[j-1]
       #no switch
       else:
         break
   return products
-    
-#binarysearch
+
+#binary search
 def binary_search(products, product_id, left = 0, right = None):
     if right == None:
       right = len(products)-1
@@ -92,9 +92,5 @@ def binary_search(products, product_id, left = 0, right = None):
       return binary_search(products, product_id, left, right)
     
     if product_id < products[mid_indx].get_id():
-      right = mid_indx - 1
-      return binary_search(products, product_id, left, right)
-    
-    if product_id < products[mid_indx]:
       right = mid_indx - 1
       return binary_search(products, product_id, left, right)
