@@ -81,9 +81,35 @@ def selection_sort(products):
 
 #insertion sort
 def insertion_sort(products):
-  pass
-
+  for i in range(1, len(products)):
+    for j in range(i, 0, -1):
+      #if switch
+      if products[j-1] > products[j]:
+        products[j-1], products[j] = products[j], products[j-1]
+      #no switch
+      else:
+        break
+  return products
+    
 
 #binary search
-def binary_search(products, product_id):
-  pass
+def binary_search(products, product_id, left = 0, right = None):
+
+    if right == None:
+      right = len(products)-1
+
+    if left > right:
+      return False
+
+    mid_indx = (right+left)//2
+
+    if product_id == products[mid_indx]:
+      return True
+    
+    if product_id > products[mid_indx]:
+      left = mid_indx + 1
+      return binary_search(products, product_id, left, right)
+    
+    if product_id < products[mid_indx]:
+      right = mid_indx - 1
+      return binary_search(products, product_id, left, right)
