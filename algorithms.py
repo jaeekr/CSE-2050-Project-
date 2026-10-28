@@ -57,7 +57,7 @@ def bubble_sort(products):
   has_swapped = False
   for i in range(n-1):
     for j in range(n-1-i):
-      if products[j+1].get_id() > products[j].get_id():
+      if products[j+1].get_id() < products[j].get_id():
         products[j+1],products[j] = products[j], products[j+1]
         has_swapped = True
     if not has_swapped:
