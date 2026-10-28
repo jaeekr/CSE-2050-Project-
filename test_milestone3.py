@@ -74,8 +74,25 @@ class TestSorting(unittest.TestCase):
 
     def test_selection_sort(self):
         self.check_sort(selection_sort)
-        
 
+    def test_insertion_sort(self):
+        self.check_sort(insertion_sort)
+        
+class TestSearch(unittest.TestCase):
+        def test_binary_search(self):
+        #reg product example
+        p = [-3, 2, 5, 7, 9, 23, 43]
+        #in list
+        self.assertTrue(binary_search(p, -3))
+        self.assertTrue(binary_search(p, 43))
+        self.assertTrue(binary_search(p, 23))
+        #in bounds out of list
+        self.assertFalse(binary_search(p, 4))
+        #out of bounds
+        self.assertFalse(binary_search(p, 100))
+        self.assertFalse(binary_search(p, -5))
+        #test of empty list
+        self.assertFalse(binary_search([], 3))
 
 if __name__ == "__main__":
     unittest.main()
