@@ -90,10 +90,10 @@ class Store:
 
 #MILESTONE 3 UPDATES
     def bubble_sort_products(self):
-            pass
+        bubble_sort(self.products)
 
     def selection_sort_products(self):
-        pass
+        selection_sort(self.products)
 
     def insertion_sort_products(self):
         pass
