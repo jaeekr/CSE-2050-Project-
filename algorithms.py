@@ -91,20 +91,18 @@ def insertion_sort(products):
         break
   return products
     
-
-#binary search
+#binarysearch
 def binary_search(products, product_id, left = 0, right = None):
-
     if right == None:
       right = len(products)-1
 
     if left > right:
-      return False
+      return -1
 
     mid_indx = (right+left)//2
 
     if product_id == products[mid_indx]:
-      return True
+      return mid_indx
     
     if product_id > products[mid_indx]:
       left = mid_indx + 1
