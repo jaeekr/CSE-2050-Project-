@@ -57,6 +57,25 @@ class TestStoreCatalogAndChange(unittest.TestCase):
     def test_recursive_catalog_total_empty_store(self):
         self.assertEqual(Store().recursive_catalog_total(), 0.0)
 
+class TestSorting(unittest.TestCase):
+    def check_sort(self, sort_func):
+        a = Product('A1', 'Camera', 20)
+        b = Product('B1', 'Phone', 30)
+        c = Product('C1', 'Tablet', 10)
+        expected = [a, b, c]
+
+        for data in ([b, c, a], [a, b, c], [c, b, a]):
+            l1 = list(data)      
+            sort_func(l1)
+            self.assertEqual(l1, expected)
+
+    def test_bubble_sort(self):
+        self.check_sort(bubble_sort)
+
+    def test_selection_sort(self):
+        self.check_sort(selection_sort)
+        
+
 
 if __name__ == "__main__":
     unittest.main()
