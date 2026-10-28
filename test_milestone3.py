@@ -10,7 +10,7 @@ from store import Store
 from algorithms import (recursive_total_price, fewest_coins, bubble_sort, selection_sort, insertion_sort, binary_search)
 import unittest
 
-class TestRecursionTotalPrice:
+class TestRecursionTotalPrice(unittest.TestCase):
     def test_empty_list(self):
         self.assertEqual(recursive_total_price([]), 0.0)
 
@@ -22,6 +22,7 @@ class TestRecursionTotalPrice:
         ]
         self.assertAlmostEqual(recursive_total_price(products), 129.97)
 
+
 class TestFewestCoins(unittest.TestCase):
     """Tests for fewest_coins."""
 
@@ -30,6 +31,9 @@ class TestFewestCoins(unittest.TestCase):
 
     def test_exact_coin(self):
         self.assertEqual(fewest_coins([1, 5, 10], 10), 1)
+    def test_impossible_amount(self):
+        self.assertEqual(fewest_coins([5, 10], 3), -1)
+        self.assertEqual(fewest_coins([5, 10], 12), -1)
 
     def test_combination_of_coins(self):
         self.assertEqual(fewest_coins([1, 5, 10], 12), 3)
@@ -50,6 +54,9 @@ class TestStoreCatalogAndChange(unittest.TestCase):
     def test_calculate_change(self):
         self.assertEqual(self.store.calculate_change([1, 5, 10], 12), 3)
         self.assertEqual(self.store.calculate_change([1, 5, 10], 0), 0)
+
+    def test_calculate_change_impossible(self):
+        self.assertEqual(self.store.calculate_change([5, 10], 3), -1)
 
     def test_recursive_catalog_total(self):
         self.assertAlmostEqual(self.store.recursive_catalog_total(), 129.97)

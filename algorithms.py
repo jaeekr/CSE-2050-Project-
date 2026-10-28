@@ -11,10 +11,9 @@ def fewest_coins(coins, amount, results=None):
   if results is None:
     results={}
   return helper(coins,amount, results)
-    
 
 def helper(coins,amount,results):
-  minCoins = amount
+  minCoins = -1
   if amount in coins: #base case 1
     return 1
   elif amount ==0:  #base case 0
@@ -24,28 +23,12 @@ def helper(coins,amount,results):
   else:
     validCoins = [c for c in coins if c <= amount]
     for i in validCoins:
-      numCoins = 1 + helper(coins, amount-i, results)
-      if numCoins < minCoins:
+       sub = helper(coins, amount - i, results)        # change 1
+       if sub != -1:                                   # change 2
+        numCoins = 1 + sub
+        if minCoins == -1 or numCoins < minCoins:     # change 3
           minCoins = numCoins
-          results[amount] = minCoins
-  return minCoins
-          
-
-
-  
-#this is a worse version since but this one doesn't use the helper or results 
-def fewest_coins_backup(coins, amount):
-  '''fewest coins: use top down memoization'''
-  minCoins = amount
-  if coins in amount:
-    return 1
-  elif amount ==0:
-    return 0 
-  else:
-    for i in [c for c in coins if c <= amount]:
-      numCoins =  1 + fewest_coins(coins, amount-1)
-      if numCoins < minCoins:
-        minCoins = numCoins
+    results[amount] = minCoins                        # dedented: after the loop
   return minCoins
     
 
