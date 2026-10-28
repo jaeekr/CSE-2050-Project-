@@ -83,16 +83,16 @@ class TestSearch(unittest.TestCase):
             #reg product example
             p = [-3, 2, 5, 7, 9, 23, 43]
             #in list
-            self.assertTrue(binary_search(p, -3))
-            self.assertTrue(binary_search(p, 43))
-            self.assertTrue(binary_search(p, 23))
+            self.assertEqual(binary_search(p, -3), 0)
+            self.assertEqual(binary_search(p, 43), 6)
+            self.assertEqual(binary_search(p, 23), 5)
             #in bounds out of list
-            self.assertFalse(binary_search(p, 4))
+            self.assertEqual(binary_search(p, 4), )
             #out of bounds
-            self.assertFalse(binary_search(p, 100))
-            self.assertFalse(binary_search(p, -5))
+            self.assertEqual(binary_search(p, 100), -1)
+            self.assertEqual(binary_search(p, -5), -1)
             #test of empty list
-            self.assertFalse(binary_search([], 3))
-
+            self.assertEqual(binary_search([], 3), -1)
+            
 if __name__ == "__main__":
     unittest.main()
