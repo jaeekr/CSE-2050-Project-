@@ -98,7 +98,7 @@ class Store:
     def insertion_sort_products(self):
         insertion_sort(self.products)
 
-    def binary_search_products(self, product_id: str):
+    def binary_search_product(self, product_id: str):
         index = binary_search(self.products, product_id)
         if index == -1:
             return None
