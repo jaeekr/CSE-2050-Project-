@@ -1,3 +1,5 @@
+
+############## Miletone 3 ##################
 #Recursive catalog total: compute the total value of all product prices using recursion
 def recursive_total_price(products):
   """Return the total of all product prices using recursion."""
@@ -31,8 +33,6 @@ def helper(coins,amount,results):
     results[amount] = minCoins                        # dedented: after the loop
   return minCoins
     
-
-
 
 #bubble sort
 def bubble_sort(products):
@@ -94,3 +94,17 @@ def binary_search(products, product_id, left = 0, right = None):
     if product_id < products[mid_indx].get_id():
       right = mid_indx - 1
       return binary_search(products, product_id, left, right)
+
+
+############## Miletone 4 ##################
+
+
+#merge sort
+
+
+#quick sort
+
+
+#quick select
+
+
