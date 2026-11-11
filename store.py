@@ -4,7 +4,9 @@ from order_queue import OrderQueue
 from order import Order
 from customer import Customer
 from product import Product
-from algorithms import (recursive_total_price, fewest_coins, bubble_sort, selection_sort, insertion_sort, binary_search)
+from hash_mapping import HashMapping
+
+from algorithms import (recursive_total_price, fewest_coins, bubble_sort, selection_sort, insertion_sort, binary_search, merge_sort, quick_sort, quick_select)
 class Store:
     
     def __init__(self):
@@ -14,19 +16,21 @@ class Store:
         self.order_queue = OrderQueue()
         self.processed_order = Stack()
         self.order_counter = 0
+        self.product_lookup = HashMapping()
+
 
 
     def add_product(self, product: 'Product') -> bool:
         if self.find_product(product.id) is None:
             self.products.append(product)
+            self.product_lookup.put(product.get_id(), product)
             return True
         return False
 
-    def find_product(self, product_id: str) -> 'Product':
-        for p in self.products:
-            if p.id == product_id:
-                return p
-        return None
+    def find_product(self, product_id: str) -> 'Product | None':
+        if product_id not in self.product_lookup:
+            return None
+        return self.product_lookup.get(product_id)
 
     def add_customer(self, customer: 'Customer') -> bool:
         if self.find_customer(customer.id) is None:
@@ -87,7 +91,6 @@ class Store:
             self.processed_order.push(order)
         return history 
 
-
 #MILESTONE 3 UPDATES
     def bubble_sort_products(self):
         bubble_sort(self.products)
@@ -98,7 +101,7 @@ class Store:
     def insertion_sort_products(self):
         insertion_sort(self.products)
 
-    def binary_search_product(self, product_id: str):
+    def binary_search_products(self, product_id: str):
         index = binary_search(self.products, product_id)
         if index == -1:
             return None
@@ -110,6 +113,16 @@ class Store:
 
     def calculate_change(self, coins: list[int], amount: int):
         return fewest_coins(coins, amount)
+
+#MILESTONE 4 UPDATES
+    def merge_sort_products(self):
+        merge_sort(self.products)
+    def quick_sort_products(self):
+        quick_sort(self.products)
+    def quick_select_product(self,k:int) -> 'Product | None' :
+        return quick_select(self.products, k)
+           
+
 
 
 
