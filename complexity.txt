@@ -24,7 +24,15 @@ Store.insertion_sort_products: O(n^2)
 Store.binary_search_product: O(log n)
 
 Milestone 4:
-merge_sort:
-quick_sort:
-quick_select:
+merge_sort: O(nlogn)
+quick_sort (average case): O(nlogn)
+quick_sort (worst case): O(n^2)
+quick_select (average case): O(n)
+quick_select (worst case): O(n^2)
+HashMapping.put (average case):
+HashMapping.get (average case):
+HashMapping.get (worst case):
+HashMapping.rehash:
+Store.find_product (worst case):
+
 
