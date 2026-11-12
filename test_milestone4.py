@@ -67,7 +67,7 @@ class TestHash_Mapping(unittest.TestCase):
         m = HashMapping(size=3)
         self.assertRaises(KeyError, m.get, "P999")
 
-class TestNewSorting(unittest.TestCase):
+class Milestone4_algorithms(unittest.TestCase):
     def check_sort(self, sort_func):
         a = Product('A1', 'Camera', 20)
         b = Product('B1', 'Phone', 30)
