@@ -171,10 +171,10 @@ def quick_select(products, k, left = 0, right = None):
     if products[i]<products[j]:
       products[i], products[j] = products[j], products[i]
       pivot = i
-    if pivot == len(products)//2:
-      return products[pivot]
-    elif pivot > len(products)//2:
-      return quick_select(products, left, pivot)
-    elif pivot < len(products)//2:
-      return quick_select(products, pivot+1, right)
-    
+
+  if pivot == k:
+    return products[pivot]
+  elif pivot > k:
+    return quick_select(products, k, left, pivot)
+  else:
+    return quick_select(products, k, pivot + 1, right)
