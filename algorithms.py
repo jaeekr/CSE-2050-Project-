@@ -98,13 +98,83 @@ def binary_search(products, product_id, left = 0, right = None):
 
 ############## Miletone 4 ##################
 
-
 #merge sort
+def merge_sort(products):
+  '''sorts products by dividing it into sublists, sorting those sublists and combining them all'''
+  if len(products) <= 1:
+    return products
+  
+  mid = len(products)//2
+  left = products[:mid]
+  right = products[mid:]
 
+  left = merge_sort(left)
+  right = merge_sort(right)
+
+  #combine subproblems
+  i = 0
+  j = 0
+  while i < len(left) and j < len(right):
+    if left[i] < right[j]:
+      products[i+j] = left[i]
+      i += 1
+    else:
+      products[i+j] = right[j]
+      j += 1
+  products[i+j:] = left[i:] + right[j:]
+  return products
 
 #quick sort
+def quick_sort(products, left = 0, right = None):
+  '''sorts products by choosing a pivot and partitioning the list into two sublists'''
+  if right is None:
+    right = len(products)
 
+  if right - left <= 1:
+    return None
+
+  #partitioning around a pivot
+  pivot = right-1
+  i = left
+  j = right-2
+
+  #pivot
+  while i < j:
+    while products[i] < products[pivot]:
+      i += 1
+    while products[j] > products[pivot] and i < j:
+      j -= 1
+    if i< j:
+      products[i], products[j] = products[j], products[i]
+
+  if products[i] >= products[pivot]:
+    products[i], products[pivot] = products[pivot], products[i]
+    pivot = i
+
+  quick_sort(products, left, pivot)
+  quick_sort(products, pivot+1, right)
 
 #quick select
-
-
+def quick_select(products, k, left = 0, right = None):
+  '''returns the kth smallest product in the list'''
+  if right is None:
+    right = len(products)
+  
+  pivot = right-1
+  i = left
+  j = pivot - 2
+  while i<j:
+    while products[i] < products[pivot]:
+      i += 1
+    while products[j] > products[pivot] and i<j:
+      j -= 1
+    if products[i]<products[j]:
+      products[i], products[j] = products[j], products[i]
+      pivot = i
+    if pivot == len(products)//2:
+      return products[pivot]
+    elif pivot > len(products)//2:
+      return quick_select(products, left, pivot)
+    elif pivot < len(products)//2:
+      return quick_select(products, pivot+1, right)
+    
