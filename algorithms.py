@@ -115,7 +115,7 @@ def merge_sort(products):
   i = 0
   j = 0
   while i < len(left) and j < len(right):
-    if left[i] < right[j]:
+    if left[i].get_id() < right[j].get_id():
       products[i+j] = left[i]
       i += 1
     else:
@@ -131,50 +131,45 @@ def quick_sort(products, left = 0, right = None):
     right = len(products)
 
   if right - left <= 1:
-    return None
+    return products
 
-  #partitioning around a pivot
-  pivot = right-1
+  pivot = right - 1
   i = left
-  j = right-2
-
-  #pivot
-  while i < j:
-    while products[i] < products[pivot]:
-      i += 1
-    while products[j] > products[pivot] and i < j:
-      j -= 1
-    if i< j:
+  
+  for j in range(left, right-1):
+    if products[j].get_id() < products[pivot].get_id():
       products[i], products[j] = products[j], products[i]
+      i += 1
+      
+  products[i], products[pivot] = products[pivot], products[i]
+  pivot_idx = i
 
-  if products[i] >= products[pivot]:
-    products[i], products[pivot] = products[pivot], products[i]
-    pivot = i
-
-  quick_sort(products, left, pivot)
-  quick_sort(products, pivot+1, right)
+  quick_sort(products, left, pivot_idx)
+  quick_sort(products, pivot_idx + 1, right)
 
 #quick select
 def quick_select(products, k, left = 0, right = None):
-  '''returns the kth smallest product in the list'''
+  '''returns the kth smallest product in the list by price'''
   if right is None:
     right = len(products)
   
-  pivot = right-1
-  i = left
-  j = pivot - 2
-  while i<j:
-    while products[i] < products[pivot]:
-      i += 1
-    while products[j] > products[pivot] and i<j:
-      j -= 1
-    if products[i]<products[j]:
-      products[i], products[j] = products[j], products[i]
-      pivot = i
+  if left >= right-1:
+    return products[left] if 0 <= left < len(products) else None
 
-  if pivot == k:
-    return products[pivot]
-  elif pivot > k:
-    return quick_select(products, k, left, pivot)
+  pivot = right - 1
+  i = left
+  
+  for j in range(left, right - 1):
+    if products[j].get_price() < products[pivot].get_price():
+      products[i], products[j] = products[j], products[i]
+      i += 1
+      
+  products[i], products[pivot] = products[pivot], products[i]
+  pivot_idx = i
+
+  if pivot_idx == k:
+    return products[pivot_idx]
+  elif pivot_idx > k:
+    return quick_select(products, k, left, pivot_idx)
   else:
-    return quick_select(products, k, pivot + 1, right)
+    return quick_select(products, k, pivot_idx + 1, right)
