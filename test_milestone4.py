@@ -67,7 +67,50 @@ class TestHash_Mapping(unittest.TestCase):
         m = HashMapping(size=3)
         self.assertRaises(KeyError, m.get, "P999")
 
+class TestNewSorting(unittest.TestCase):
+    def check_sort(self, sort_func):
+        a = Product('A1', 'Camera', 20)
+        b = Product('B1', 'Phone', 30)
+        c = Product('C1', 'Tablet', 10)
+        expected = [a, b, c]
 
+        for data in ([b, c, a], [a, b, c], [c, b, a]):
+            l1 = list(data)      
+            sort_func(l1)
+            self.assertEqual(l1, expected)
+
+        empty_list = []
+        self.assertEqual(sort_func(empty_list), [])
+
+        list_of_one = [a]
+        self.assertEqual(sort_func(list_of_one), [a])
+
+    def test_merge_sort(self):
+        self.check_sort(merge_sort)
+
+    def test_quick_sort(self):
+        self.check_sort(quick_sort)
+
+    def test_quick_select(self):
+        a = Product('A1', 'Camera', 20)
+        b = Product('B1', 'Phone', 30)
+        c = Product('C1', 'Tablet', 10)
+        products = [a, b, c]
+
+        # Test finding the smallest element
+        self.assertEqual(quick_select(products, 0), c)
+        # Test finding the largest element
+        self.assertEqual(quick_select(products, 2), b)
+        # Test finding the middle element
+        self.assertEqual(quick_select(products, 1), a)
+
+        empty_list = []
+        self.assertIsNone(quick_select(empty_list, 0))
+        list_of_one = [a]
+        self.assertEqual(quick_select(list_of_one, 0), a)
+
+if __name__ == "__main__":
+    unittest.main()
 
 
 
