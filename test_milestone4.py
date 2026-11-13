@@ -131,12 +131,12 @@ class TestStoreIntegration(unittest.TestCase):
         self.store.quick_sort_products()
         ids = [p.get_id() for p in self.store.products]
         self.assertEqual(ids, ["A0", "A1", "A3"])
-
+        
     def test_quick_select(self):
-        self.assertEqual(self.store.quick_select_product(0).get_id(), "A0")
-        self.assertEqual(self.store.quick_select_product(2).get_id(), "A3")
-        self.assertIsNone(self.store.quick_select_product(-1))
-        self.assertIsNone(self.store.quick_select_product(3))
+        self.assertEqual(self.store.quick_select_product(1).get_id(), "A0")
+        self.assertEqual(self.store.quick_select_product(3).get_id(), "A3")
+        self.assertIsNone(self.store.quick_select_product(0))
+        self.assertIsNone(self.store.quick_select_product(4))
 
     def test_find_product(self):
         self.assertEqual(self.store.find_product("A1").get_name(), "Keyboard")
@@ -147,7 +147,6 @@ class TestStoreIntegration(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
 
 
 
