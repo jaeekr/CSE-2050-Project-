@@ -153,7 +153,7 @@ def quick_select(products, k, left = 0, right = None):
   if right is None:
     right = len(products)
   
-  if k < 0 or k >= len(products):
+  if k < 1 or k > len(products):
     return None
 
   if left >= right - 1:
@@ -163,16 +163,16 @@ def quick_select(products, k, left = 0, right = None):
   i = left
   
   for j in range(left, right - 1):
-    if products[j].get_price() < products[pivot].get_price():
+    if products[j].get_id() < products[pivot].get_id():
       products[i], products[j] = products[j], products[i]
       i += 1
       
   products[i], products[pivot] = products[pivot], products[i]
   pivot_idx = i
 
-  if pivot_idx == k:
+  if pivot_idx == k -1:
     return products[pivot_idx]
-  elif pivot_idx > k:
+  elif pivot_idx > k-1:
     return quick_select(products, k, left, pivot_idx)
   else:
     return quick_select(products, k, pivot_idx + 1, right)
