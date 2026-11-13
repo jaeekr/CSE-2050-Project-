@@ -153,9 +153,12 @@ def quick_select(products, k, left = 0, right = None):
   if right is None:
     right = len(products)
   
-  if left >= right-1:
-    return products[left] if 0 <= left < len(products) else None
+  if k < 0 or k >= len(products):
+    return None
 
+  if left >= right - 1:
+    return products[left]
+  
   pivot = right - 1
   i = left
   
