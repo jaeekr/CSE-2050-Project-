@@ -8,7 +8,7 @@ from product import Product
 from customer import Customer
 from cart import ShoppingCart
 from store import Store
-from algorithms import (recursive_total_price, fewest_coins, bubble_sort, selection_sort, insertion_sort, binary_search)
+from algorithms import (recursive_total_price, fewest_coins, bubble_sort, selection_sort, insertion_sort, binary_search, merge_sort, quick_sort, quick_select)
 from entry import Entry
 from hash_mapping import HashMapping
 
@@ -109,8 +109,45 @@ class Milestone4_algorithms(unittest.TestCase):
         list_of_one = [a]
         self.assertEqual(quick_select(list_of_one, 0), a)
 
+class TestStoreIntegration(unittest.TestCase):
+
+    def set_up(self):
+        store = Store()
+        p1 = Product("A0", "Mouse", 29.99)
+        p2 = Product("A1", "Keyboard", 59.99)
+        p3 = Product("A3", "Headphones", 39.99)
+
+        self.store.add_product(p1)
+        self.store.add_product(p2)
+        self.store.add_product(p3)
+
+    def test_sort(self):
+        self.store.products.reverse()  #unsorts
+        self.store.merge_sort_products()
+        ids = [p.get_id() for p in self.store.products] # gets ids for each product
+        self.assertEqual(ids, ["A0", "A1", "A3"]) #checks ids against actrual ones
+
+        self.store.products.reverse()  # unsorts
+        self.store.quick_sort_products()
+        ids = [p.get_id() for p in self.store.products]
+        self.assertEqual(ids, ["A0", "A1", "A3"])
+
+    def test_quick_select(self):
+        self.assertEqual(self.store.quick_select_product(0).get_id(), "A0")
+        self.assertEqual(self.store.quick_select_product(2).get_id(), "A3")
+        self.assertIsNone(self.store.quick_select_product(-1))
+        self.assertIsNone(self.store.quick_select_product(3))
+
+    def test_find_product(self):
+        self.assertEqual(self.store.find_product("A1").get_name(), "Keyboard")
+        self.assertIsNone(self.store.find_product("A9"))
+        self.store.merge_sort_products()
+        self.assertEqual(self.store.find_product("A3").get_name(), "Headphones")
+    
+
 if __name__ == "__main__":
     unittest.main()
+
 
 
 
