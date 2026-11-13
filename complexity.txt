@@ -33,6 +33,6 @@ HashMapping.put (average case):
 HashMapping.get (average case):
 HashMapping.get (worst case):
 HashMapping.rehash:
-Store.find_product (worst case):
+Store.find_product (worst case): O(n)
 
 
